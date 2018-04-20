@@ -12,11 +12,8 @@ int map[4][4] = {0, 0, 0, 0,
 				 0, 0, 0, 0,
 				 0, 0, 0, 0,
 				 0, 0, 0, 0};
-//Score
-int score = 0;
-   
 			   
-// Hàm xóa màn hình.
+// HÃ m xÃ³a mÃ n hÃ¬nh.
 void XoaManHinh()
 {
 	HANDLE hOut;
@@ -27,7 +24,6 @@ void XoaManHinh()
 	SetConsoleCursorPosition(hOut, Position);
 }
 
-
 void resizeConsole(int width, int height)
 {
 	HWND console = GetConsoleWindow();
@@ -36,7 +32,7 @@ void resizeConsole(int width, int height)
 	MoveWindow(console, r.left, r.top, width, height, TRUE);
 }
 
-// Hàm tô màu.
+// HÃ m tÃ´ mÃ u.
 void textcolor(int x)
 {
 	HANDLE mau;
@@ -44,7 +40,7 @@ void textcolor(int x)
 	SetConsoleTextAttribute(mau,x);
 }
 
-// Hàm di chuyên con tro den vi tri x, y
+// HÃ m di chuyÃªn con tro den vi tri x, y
 void gotoxy(int x,int y)
 {    
 	HANDLE hConsoleOutput;    
@@ -52,7 +48,6 @@ void gotoxy(int x,int y)
 	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);    
 	SetConsoleCursorPosition(hConsoleOutput , Cursor_an_Pos);
 }
-
 
 int color_of_data(int x){
 
@@ -92,7 +87,6 @@ int color_of_block(int x){
 	
 }
 
-
 //draw background game
 
 
@@ -123,7 +117,6 @@ void draw_background(){
 	}
 	
 }
-
 
 //Processes arr and score
 void processer(int array[4]){
@@ -177,6 +170,7 @@ void draw_game(){
 	}
 	
 //Puts your score
+	int score = 0;
 	gotoxy(40, 1);
 	textcolor(15);
 	cout << "Score: " << score;
@@ -204,7 +198,6 @@ void make_game(){
 		map[i][j] = 2;
 	}
 }
-
 
 //move in game
 void move_game(){
@@ -286,8 +279,6 @@ void move_game(){
 	if(check) make_game();
 }
 
-
-
 void game_end(){
 	//win
 	for(int i = 0; i < 4; i++){
@@ -311,7 +302,6 @@ void game_end(){
 				check = true;
 		}
 	}
-	
 	if(check == false && check_arr_empty() == 0){
 		gotoxy(40, 3);
 		textcolor(12);
@@ -321,9 +311,6 @@ void game_end(){
 		exit(1);
 	}
 }
-
-
-
 
 int main(){
 	srand(time(NULL));
