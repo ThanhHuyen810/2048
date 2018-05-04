@@ -86,7 +86,7 @@ int color_of_data(int x){
 		case 32: return 64;
 		case 64: return 80;
 		case 128: return 96;
-		case 256: return 254;
+		case 256: return 225;
 		case 512: return 161;
 		case 1024: return 192;
 		case 2048: return 208;
