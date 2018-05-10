@@ -31,7 +31,7 @@ csbiInfo.dwCursorPosition.X = 0;
 csbiInfo.dwCursorPosition.Y = 0;
 }
 
-// Hàm tô màu.
+// HÃ m tÃ´ mÃ u.
 void textcolor(int x)
 {
 	HANDLE mau;
@@ -39,7 +39,7 @@ void textcolor(int x)
 	SetConsoleTextAttribute(mau,x);
 }
 
-// Hàm di chuyên con tro den vi tri x, y
+// HÃ m di chuyÃªn con tro den vi tri x, y
 void gotoxy(int x,int y)
 {
 	HANDLE hConsoleOutput;
@@ -51,7 +51,7 @@ void gotoxy(int x,int y)
 void modau()
 {
      cout << "\n\n\n\n\n\n\n\n\n"
-         << "\t\t       -----CHAO MUNG BAN DEN VOI-----\n"
+         << "\t\t        ----CHAO MUNG BAN DEN VOI-----\n"
          << "\n\n"
          << "\t\t\t222222  000000  4    4  888888 \n"
          << "\t\t\t     2  0    0  4    4  8    8 \n"
