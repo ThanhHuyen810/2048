@@ -1,10 +1,10 @@
 #include<iostream>
-#define _WIN32_WINNT 0x0500
 #include<windows.h>
 #include<conio.h>
 #include<ctime>
 #include<cstdlib>
 #include<stdio.h>
+
 using namespace std;
 
 //Array game 2048
@@ -15,25 +15,20 @@ int map[4][4] = {0, 0, 0, 0,
 				 0, 0, 0, 0};
 //Score
 int score = 0;
-
-// Hàm xóa màn hình.
-void XoaManHinh()
+//Xoa man hinh
+void clrscr()
 {
-	HANDLE hOut;
-	COORD Position;
-	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	Position.X = 0;
-	Position.Y = 0;
-	SetConsoleCursorPosition(hOut, Position);
-}
+CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
+HANDLE hConsoleOut;
+COORD Home = {0,0};
+DWORD dummy;
 
+hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
+GetConsoleScreenBufferInfo(hConsoleOut,&csbiInfo);
 
-void resizeConsole(int width, int height)
-{
-	HWND console = GetConsoleWindow();
-	RECT r;
-	GetWindowRect(console, &r);
-	MoveWindow(console, r.left, r.top, width, height, TRUE);
+FillConsoleOutputCharacter(hConsoleOut,' ',csbiInfo.dwSize.X * csbiInfo.dwSize.Y,Home,&dummy);
+csbiInfo.dwCursorPosition.X = 0;
+csbiInfo.dwCursorPosition.Y = 0;
 }
 
 // Hàm tô màu.
@@ -63,17 +58,20 @@ void modau()
          << "\t\t\t222222  0    0  444444  888888 \n"
          << "\t\t\t2       0    0       4  8    8 \n"
          << "\t\t\t222222  000000       4  888888 \n"
+         << "\n\n\n\n\n\n\n\n\n";
+         system ("pause");
+         clrscr();
+         gotoxy(1,1);
+    cout << "\n\n\n\n\n\t\t\t\t\t------LUAT CHOI------ "
          << "\n\n\n\n"
-         << "LUAT CHOI: "
-         << "\n\n"
-         << "2048 choi tren mot bang co kich thuoc 4x4."
-         << "Nguoi choi su dung cac phim mui ten va cac khoi vuong se truot theo mot trong bon huong (len, xuong, trai, phai)."
-         << "     Moi luot co mot khoi co gia tri 2 hoac 4 xuat hien ngau nhien o mot o trong tren bang."
-         << "   Cac khoi vuong truot theo huong chi dinh cho den khi cham den bien cua bang hoac cham vao khoi vuong khac."
-         << " Neu hai khoi vuong co cung gia tri cham vao nhau, chung se ket hop thanh mot khoi vuong co gia tri bang tong gia tri cua hai khoi vuong do."
-         << "  Khoi vuong ket qua khong the ket hop voi khoi vuong khac trong mot luot di chuyen."
-         << " Khi nguoi choi tao duoc khoi vuong co gia tri 2048 thi thang cuoc."
-         << " Khi khong con o trong va cac o ke nhau deu khac gia tri thi tro choi ket thuc!\n\n\n";
+         << "\t++ 2048 choi tren mot bang co kich thuoc 4x4.\n"
+         << "\t++ Nguoi choi su dung cac phim mui ten va cac khoi vuong se truot theo mot trong bon huong (len, xuong, trai, phai).\n"
+         << "\t++ Moi luot co mot khoi co gia tri 2 hoac 4 xuat hien ngau nhien o mot o trong tren bang.\n"
+         << "\t++ Cac khoi vuong truot theo huong chi dinh cho den khi cham den bien cua bang hoac cham vao khoi vuong khac.\n"
+         << "\t++ Neu hai khoi vuong co cung gia tri cham vao nhau, chung se ket hop thanh mot khoi vuong co gia tri bang tong gia tri cua hai khoi vuong do."
+         << "\t++ Khoi vuong ket qua khong the ket hop voi khoi vuong khac trong mot luot di chuyen.\n"
+         << "\t++ Khi nguoi choi tao duoc khoi vuong co gia tri 2048 thi thang cuoc.\n"
+         << "\t++ Khi khong con o trong va cac o ke nhau deu khac gia tri thi tro choi ket thuc!\n\n\n";
          system ("pause");
 }
 
@@ -82,16 +80,16 @@ int color_of_data(int x){
 
 	switch(x){
 		case 2: return 160;
-		case 4: return 63;
-		case 8: return 47;
-		case 16: return 31;
-		case 32: return 79;
-		case 64: return 95;
-		case 128: return 111;
-		case 256: return 159;
-		case 512: return 176;
-		case 1024: return 207;
-		case 2048: return 223;
+		case 4: return 48;
+		case 8: return 208;
+		case 16: return 176;
+		case 32: return 64;
+		case 64: return 80;
+		case 128: return 96;
+		case 256: return 225;
+		case 512: return 240;
+		case 1024: return 192;
+		case 2048: return 208;
 	}
 
 }
@@ -103,13 +101,13 @@ int color_of_block(int x){
 		case 0: return 119;
 		case 2: return 170;
 		case 4: return 51;
-		case 8: return 34;
-		case 16: return 17;
+		case 8: return 221;
+		case 16: return 187;
 		case 32: return 68;
 		case 64: return 85;
 		case 128: return 102;
-		case 256: return 153;
-		case 512: return 187;
+		case 256: return 238;
+		case 512: return 255;
 		case 1024: return 204;
 		case 2048: return 221;
 	}
@@ -183,11 +181,11 @@ void draw_game(){
 
 			textcolor(color_of_block(map[i][j]));
 			gotoxy(x-1, y-1);
-			cout << "333333";
+			cout << "      ";
 			gotoxy(x-1, y);
-			cout << "333333";
+			cout << "      ";
 			gotoxy(x-1, y+1);
-			cout << "333333";
+			cout << "      ";
 			textcolor(color_of_data(map[i][j]));
 
 			if(map[i][j] != 0){
@@ -201,9 +199,9 @@ void draw_game(){
 	}
 
 //Puts your score
-	gotoxy(40, 1);
+	gotoxy(50, 5);
 	textcolor(15);
-	cout << "Score: " << score
+	cout << "Diem cua ban:  " << score
          << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 }
 
@@ -311,17 +309,15 @@ void move_game(){
 	if(check) make_game();
 }
 
-
-
 void game_end(){
 	//win
 	for(int i = 0; i < 4; i++){
 		for(int j = 0; j < 4; j++){
 			if(map[i][j] == 2048) {
-				gotoxy(40, 3);
+				gotoxy(50, 8);
 				textcolor(12);
-				cout << "You win !!";
-				gotoxy(1, 20);
+				cout << "Ban da thang!!!";
+				gotoxy(1, 30);
 				system("pause");
 				exit(1);
 			}
@@ -331,37 +327,30 @@ void game_end(){
 	//lose
 	bool check = false;
 	for(int i = 0; i < 4; i++){
-		for(int j = 0; j < 3; j++){
-			if(map[i][j] == map[i][j+1] || map[j][i] == map[j][i+1])
-				check = true;
-		}
+		for(int j = 0; j < 4; j++){
+            if (i==3)
+                {
+                    if (j!=3)
+                        if (map[i][j] == map[i][j+1]) check = true;
+                }
+            else if (j == 3)
+                {
+                    if (map[i][j] == map[i+1][j]) check = true;
+                }
+            else if (map[i][j] == map[i][j+1] || map[i][j] == map[i+1][j]) check = true;
+            	}
 	}
 
 	if(check == false && check_arr_empty() == 0){
-		gotoxy(40, 3);
+		gotoxy(50, 8);
 		textcolor(12);
-		cout << "You lose !!";
-		gotoxy(1, 20);
+		cout << "Ban da thua!!!";
+		gotoxy(1, 30);
 		system("pause");
 		exit(1);
 	}
 }
 
-
-void clrscr()
-{
-CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
-HANDLE hConsoleOut;
-COORD Home = {0,0};
-DWORD dummy;
-
-hConsoleOut = GetStdHandle(STD_OUTPUT_HANDLE);
-GetConsoleScreenBufferInfo(hConsoleOut,&csbiInfo);
-
-FillConsoleOutputCharacter(hConsoleOut,' ',csbiInfo.dwSize.X * csbiInfo.dwSize.Y,Home,&dummy);
-csbiInfo.dwCursorPosition.X = 0;
-csbiInfo.dwCursorPosition.Y = 0;
-}
 
 int main(){
     modau();
@@ -372,7 +361,6 @@ int main(){
 		y = rand() % 4;
 	map[x][y] = 2;
 
-	resizeConsole(550, 460);
 	draw_background();
 
 	do{
