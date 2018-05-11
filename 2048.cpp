@@ -67,7 +67,7 @@ void modau()
          << "\t++ Nguoi choi su dung cac phim mui ten va cac khoi vuong se truot theo mot trong bon huong (len, xuong, trai, phai).\n"
          << "\t++ Moi luot co mot khoi co gia tri 2 hoac 4 xuat hien ngau nhien o mot o trong tren bang.\n"
          << "\t++ Cac khoi vuong truot theo huong chi dinh cho den khi cham den bien cua bang hoac cham vao khoi vuong khac.\n"
-         << "\t++ Neu hai khoi vuong co cung gia tri cham vao nhau, chung se ket hop thanh mot khoi vuong co gia tri bang tong gia tri cua hai khoi vuong do."
+         << "\t++ Neu hai khoi vuong co cung gia tri cham vao nhau, chung se ket hop thanh mot khoi vuong co gia tri bang tong gia tri cua hai khoi vuong do.\n"
          << "\t++ Khoi vuong ket qua khong the ket hop voi khoi vuong khac trong mot luot di chuyen.\n"
          << "\t++ Khi nguoi choi tao duoc khoi vuong co gia tri 2048 thi thang cuoc.\n"
          << "\t++ Khi khong con o trong va cac o ke nhau deu khac gia tri thi tro choi ket thuc!\n\n\n";
