@@ -124,7 +124,7 @@ void draw_background(){
 
 			if(i == 0 || i == 4 || i ==  8 || i == 12 || i == 16){
 				textcolor(136);
-				cout << 33;
+				cout << "  ";
 			}
 			else if(j == 0 || j == 4 || j ==  8 || j == 12 || j == 16){
 				textcolor(136);
