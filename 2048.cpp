@@ -10,9 +10,9 @@ using namespace std;
 //Array game 2048
 
 int map[4][4] = {0, 0, 0, 0,
-				 0, 0, 0, 0,
-				 0, 0, 0, 0,
-				 0, 0, 0, 0};
+		 0, 0, 0, 0,
+		 0, 0, 0, 0,
+		 0, 0, 0, 0};
 //Score
 int score = 0;
 //Xoa man hinh
