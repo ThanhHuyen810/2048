@@ -13,8 +13,7 @@ int map[4][4] = {0, 0, 0, 0,
 		 0, 0, 0, 0,
 		 0, 0, 0, 0,
 		 0, 0, 0, 0};
-//Score
-int score = 0;
+
 //Xoa man hinh
 void clrscr()
 {
@@ -148,6 +147,8 @@ void draw_background(){
 
 
 //Processes arr and score
+
+int score = 0;
 void processer(int array[4]){
 	for(int i = 0; i < 3; i++){
 		for(int j = i + 1; j < 4; j++){
