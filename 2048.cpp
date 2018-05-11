@@ -366,6 +366,7 @@ int main(){
 	do{
 		draw_game();
 		game_end();
+		textcolor(0);
 		if(kbhit() == 0) system("pause");
 		move_game();
 	}
