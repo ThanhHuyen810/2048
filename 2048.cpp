@@ -307,7 +307,7 @@ void move_game(){
 		}
 	}
 
-	if(check) make_game();
+	if(check==true) make_game();
 }
 
 void game_end(){
@@ -316,7 +316,7 @@ void game_end(){
 		for(int j = 0; j < 4; j++){
 			if(map[i][j] == 2048) {
 				gotoxy(50, 8);
-				textcolor(12);
+				textcolor(160);
 				cout << "Ban da thang!!!";
 				gotoxy(1, 30);
 				system("pause");
@@ -351,9 +351,15 @@ void game_end(){
 		exit(1);
 	}
 }
-
-
+void deletePointer()
+{
+	CONSOLE_CURSOR_INFO Info;
+	Info.bVisible = FALSE;
+	Info.dwSize = 20;
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &Info);
+}
 int main(){
+	deletePointer();
     modau();
     clrscr();
     gotoxy(1,1);
